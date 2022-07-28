@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xlmns:th = "https://www.thymeleaf.org/">
+
+<head>
+<title>PRODUCT List </title>
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<style>
+body {
+	margin-top : 8%;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div><a th:href="@{/products/addProduct}"class ="btn btn-dark">Add Product</a></div>
+&nbsp;
+
+
+<table class="table table-bordered">
+<tr class="table-dark">
+<th> ID </th>
+<th> SKU </th>
+<th> NAME </th>
+<th> DESCRIPTION </th>
+<th> UNIT PRICE </th>
+<th> URL </th>
+<th> ACTIVE </th>
+<th> UNITS IN STOCK </th>
+<th> DATE CREATED </th>
+<th> LAST UPDATED </th>
+<th> CATEGORY ID </th>
+</tr>
+
+<tr th:each = "prod : ${PRODUCT}">
+	<td th:text="${prod.id}" />
+	<td th:text = "${prod.sku}"/>
+	<td th:text = "${prod.name}" />
+	<td th:text = "${prod.description}" />
+	<td th:text = "${prod.unitprice}" />
+	<td th:text = "${prod.url}"/>
+	<td th:text = "${prod.active}" />
+	<td th:text = "${prod.unitsinstock}" />
+	<td th:text = "${prod.datecreated}" />
+	<td th:text = "${prod.lastupdated}"/>
+	<td th:text = "${prod.categoryid}" />
+	<td>
+		<a class ="btn btn-dark" th:href="@{/products/updateForm(id = ${prod.id} )}">update</a>
+		&nbsp;
+		<a class ="btn btn-dark" th:href="@{/products/delete(id = ${prod.id} )}" 	
+		onclick = "if(!(confirm('Are you sure to delete this product details?'))) ">delete</a>
+	&nbsp;
+	</td>
+</tr>
+</table>
+</div>
+<div>
+
+<!--<form th:action="@{/products/save}">
+    Filter: <input type="text" name="id" id="id" size="50" th:value="${id}" required />
+    &nbsp;
+    <a class ="btn btn-dark" th:href="@{/products/delete(id = ${prod.id} )}" 	
+		onclick = <tr th:each="product : ${PRODUCT}">
+              <td th:text="${product.id}"></td>
+              <td th:text="${product.name}"></td>
+              <td th:text="${product.description}"></td>
+            </tr> >delete</a>
+    &nbsp;
+    
+    </form>-->
+</div>
+
+
+</body>
+</html>
